@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brute Force Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="login-panel" aria-labelledby="login-title">
+      <div class="brand-row">
+        <div class="brand-mark" aria-hidden="true">BF</div>
+        <div>
+          <h1 id="login-title">Brute Force Lab</h1>
+          <p class="subtitle">A safe browser-only demo for learning password attacks and defenses.</p>
+        </div>
+      </div>
+
+      <form id="login-form" class="login-form">
+        <label for="username">Username</label>
+        <input id="username" name="username" autocomplete="username" value="student">
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Try a password">
+
+        <button type="submit" class="primary-button">Sign in</button>
+      </form>
+
+      <div id="login-status" class="status-box neutral" role="status">
+        Demo account: <strong>student</strong>. The password is hidden in the lab data.
+      </div>
+    </section>
+
+    <section class="lab-panel" aria-labelledby="lab-title">
+      <div class="section-heading">
+        <div>
+          <h2 id="lab-title">Attack Simulator</h2>
+          <p>Runs only against this fake login in your browser.</p>
+        </div>
+        <button id="reset-button" class="icon-button" type="button" title="Reset lab" aria-label="Reset lab">↻</button>
+      </div>
+
+      <div class="settings-grid">
+        <label class="toggle-row">
+          <input id="rate-limit-toggle" type="checkbox" checked>
+          <span>
+            <strong>Rate limit</strong>
+            <small>Slows repeated attempts</small>
+          </span>
+        </label>
+
+        <label class="toggle-row">
+          <input id="lockout-toggle" type="checkbox" checked>
+          <span>
+            <strong>Lockout</strong>
+            <small>Blocks after 5 failed attempts</small>
+          </span>
+        </label>
+      </div>
+
+      <label for="wordlist">Password wordlist</label>
+      <textarea id="wordlist" spellcheck="false"></textarea>
+
+      <div class="button-row">
+        <button id="start-attack" class="primary-button" type="button">Start simulator</button>
+        <button id="stop-attack" class="secondary-button" type="button" disabled>Stop</button>
+      </div>
+
+      <div class="metrics" aria-label="Simulation metrics">
+        <div>
+          <span id="attempt-count">0</span>
+          <small>Attempts</small>
+        </div>
+        <div>
+          <span id="elapsed-time">0.0s</span>
+          <small>Elapsed</small>
+        </div>
+        <div>
+          <span id="defense-state">Protected</span>
+          <small>Defense state</small>
+        </div>
+      </div>
+
+      <div class="log-wrap">
+        <div class="log-title">Attempt Log</div>
+        <ol id="attempt-log" class="attempt-log"></ol>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
